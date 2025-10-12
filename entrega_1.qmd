@@ -1,6 +1,6 @@
 ---
-# Nome do arquivo PDF gerado na pasta resultado
-output-file: "Entrega 1 - Gustavo"
+title: "Entrega 1 - Laura"
+format: pdf
 ---
 
 ```{r setup}
@@ -10,16 +10,37 @@ source("rdocs/entrega_1.R")
 
 # Análises
 
-## Análise tal
+## Introdução
+Essa análise tem como objetivo entender a variação do faturamento médio das lojas dessa região de 1880-1889.
 
-Introdução da análise
+
+## Análise 1
+Os dados de vendas da empresa foram importados de diferentes planilhas Excel, contendo informações de produtos, funcionários e lojas.  
+Para permitir a integração entre esses dados, alguns nomes de colunas foram padronizados,  com isso, foi possível correlacionar corretamente os registros de vendas com os produtos e as lojas correspondentes e agrupar todos os dados em uma só planilha.
+
+
+## Análise 2
+Depois as receitas foram separadas por ano, indicado por "valor_venda_real" e foi obtida a receita média das lojas por ano indicado por "ReceitaMedia"
+
 
 ```{r}
-#| label: fig-g1
-#| fig-cap: "Gráfico de barras teste "
-g1
+#Faturamento por ano e a média das lojas por ano
+faturamento_total_ano
 ```
 
-descritiva $\ref{fig-g1}$ volta pra figura
+## Análise 3
+
+Gráfico que mostra a variação do faturamento média das lojas por ano
+
+```{r}
+#| label: fig-receita_media
+#| fig_cap: "Receita Média Lojas(1880-1889)"
+grafico1
+```
+
+## Análise final
+
+como mostra a @fig-receita_media a receita média das lojas vêm crescendo desde 1880 com exceção do ano de 1888 em que houve uma pequena queda de 1.687,2 reais em relação ao ano anterior. Por outro lado, o crescimento mais significativo foi no ano de 1889 com um aumento de R$21.251,5 na receita média das lojas dessa região.
+
 
 
