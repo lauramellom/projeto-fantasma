@@ -22,3 +22,28 @@ source("rdocs/source/packages.R")
 # de teste depreciados, ou ao menos deixando como comentário. Dê preferência
 # as funções dos pacotes contidos no Tidyverse para realizar suas análises.
 # ---------------------------------------------------------------------------- #
+## Análise 2
+
+#Carregando pacotes
+library(tidyverse)
+library(readxl)
+
+
+#Importando planilhas do Exel
+infos_clientes <- read_excel("C:/Users/laura/Downloads/relatorio_old_town_road.xlsx", 
+                             sheet = "infos_clientes")
+
+#Transformando de dm para cm e de lbs para kg
+infos_clientes$Height_cm <- infos_clientes$Height_dm * 10
+infos_clientes$Weight_kg <- infos_clientes$Weight_lbs * 0.45359237
+
+grafico2 <- ggplot(infos_clientes) +
+  aes(x = Height_cm, y = Weight_kg) +
+  geom_point(colour = "#A11D21", size = 2) +
+  labs(
+    x = "Altura(cm)",
+    y = "Peso(kg)"
+  ) +
+  theme_estat()
+
+grafico2

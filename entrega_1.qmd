@@ -8,39 +8,21 @@ format: pdf
 source("rdocs/entrega_1.R")
 ```
 
-# Análises
+# Análise 1
+Introdução da Análise:
 
-## Introdução
-Essa análise tem como objetivo entender a variação do faturamento médio das lojas dessa região de 1880-1889.
+Esta análise tem como objetivo compreender a variação da receita média das lojas da região no período entre 1880 e 1889. Para isso, foram consideradas duas variáveis principais: “ano”, que é quantitativa discreta e “ReceitaMedia”, que é quantitativa contínua, expressa em reais.
 
-
-## Análise 1
-Os dados de vendas da empresa foram importados de diferentes planilhas Excel, contendo informações de produtos, funcionários e lojas.  
-Para permitir a integração entre esses dados, alguns nomes de colunas foram padronizados,  com isso, foi possível correlacionar corretamente os registros de vendas com os produtos e as lojas correspondentes e agrupar todos os dados em uma só planilha.
-
-
-## Análise 2
-Depois as receitas foram separadas por ano, indicado por "valor_venda_real" e foi obtida a receita média das lojas por ano indicado por "ReceitaMedia"
-
-
-```{r}
-#Faturamento por ano e a média das lojas por ano
-faturamento_total_ano
-```
-
-## Análise 3
-
-Gráfico que mostra a variação do faturamento média das lojas por ano
+Os valores monetários foram convertidos para R$ a fim de padronizar a análise financeira e facilitar a interpretação dos resultados.
 
 ```{r}
 #| label: fig-receita_media
 #| fig_cap: "Receita Média Lojas(1880-1889)"
 grafico1
 ```
+Descritiva:
 
-## Análise final
-
-como mostra a @fig-receita_media a receita média das lojas vêm crescendo desde 1880 com exceção do ano de 1888 em que houve uma pequena queda de 1.687,2 reais em relação ao ano anterior. Por outro lado, o crescimento mais significativo foi no ano de 1889 com um aumento de R$21.251,5 na receita média das lojas dessa região.
+Como mostra a $\ref{fig-receita_media}$, a receita média das lojas vem crescendo desde 1880, com exceção de 1888, ano em que houve uma pequena queda de R$ 1.687,20 em relação ao período anterior. Por outro lado, o crescimento mais significativo ocorreu em 1889, com um aumento de R$ 21.251,50 na receita média das lojas da região.
 
 
 

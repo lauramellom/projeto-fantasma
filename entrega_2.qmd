@@ -1,6 +1,6 @@
 ---
-# Nome do arquivo PDF gerado na pasta resultado
-output-file: "Entrega 2"
+title: "Entrega 2 - Laura"
+format: pdf
 ---
 
 ```{r setup}
@@ -8,69 +8,20 @@ output-file: "Entrega 2"
 source("rdocs/entrega_2.R")
 ```
 
+# Análise 2
+
+Introdução da Análise:
+
+Nesta análise busca-se compreender a relação entre a altura dos indivíduos, registrada originalmente em decímetros (dm) e convertida para centímetros (cm), e o peso, registrado em libras (lbs) e convertido para quilogramas (kg). Ambas as variáveis são quantitativas contínuas. O objetivo é verificar se há associação entre as medidas, avaliando se indivíduos mais altos tendem a apresentar maior peso.
 
 ```{r}
-# Rodar apenas uma vez na vida!
-## Instalando o tinytex(pacote apenas)
-### CRAN version
-install.packages('tinytex')
-
-
-## Baixando o tinytex
-library(tinytex)
-tinytex::install_tinytex()
+#| label: fig-peso-altura
+#| fig-cap: "Gráfico de dispersão do peso (kg) em função da altura (cm) dos indivíduo"
+grafico2
 ```
+Descritiva:
 
-# Objetivo
-
-Esse template foi criado para o alocado conseguir observar como ficaria sua análise o arquivo principal. É daqui que o gerente de projetos irá copiar a análise e inserir no documento principal que gerará o relatório estatístico.
-
-# Análises
-
-## Análise 3
-
-## Análise 4
-
-```{r}
-#| label: fig-
-#| fig-cap: "Gráfico "
-
-
-
-```
-
-
-::: {#quad- layout-align="center" quad-pos="H"}
-```{=latex}
-
-
-
-```
-
-Medidas resumo da 
-:::
-
-
-
-::: {#tbl-modalidades layout-align="center" tbl-pos="H"}
-```{=latex}
-
-
-```
-
-
-:::
-
-
-
-
-$\ref{fig-}$
-
-[@tbl-]
-
-
-[**Quadro** @quad-]
-
+A $\ref{fig-peso-altura}$ mostra que indivíduos mais altos costumam apresentar valores de peso maiores, ainda que haja variação considerável dentro de cada faixa de altura. As observações analisadas variam entre 150 cm e 200 cm para altura e entre 45 kg e 115 kg para peso. Nota-se maior concentração de pontos entre 170 cm e 180 cm de altura, com pesos situados principalmente entre 60 kg e 85 kg, caracterizando a região mais densa da distribuição. Apesar dessa relação geral, a dispersão dos pontos revela que pessoas com a mesma altura podem apresentar pesos bastante diferentes, indicando que outros fatores também influenciam significativamente essa medida.
 
 
 
