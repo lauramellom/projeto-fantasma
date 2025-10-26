@@ -1,6 +1,14 @@
 ---
 title: "Entrega 3 - Laura"
-format: pdf
+date: today
+lang: en
+format:
+  pdf:
+    pdf-engine: xelatex
+    include-in-header: |
+      \usepackage[brazil]{babel}
+      \usepackage[utf8]{inputenc}
+      \usepackage[T1]{fontenc}
 ---
 
 ```{r setup}
@@ -22,6 +30,7 @@ grafico3
 \begin{table}[h!]
 \centering
 \caption{Resumo das idades dos clientes por loja em Âmbar Seco}
+\label{tab:idades-lojas}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 \textbf{Loja} & \textbf{Idade mínima} & \textbf{Idade máxima} & \textbf{Idade média} & \textbf{Mediana} \\
@@ -35,4 +44,4 @@ Vendinha Rápida & 30,00 & 49,00 & 40,34 & 41,00 \\
 \end{table}
 
 
-Conforme apresentado na $\ref{fig-frequencia-idades-lojas}$ observa-se que a distribuição das idades apresenta variações significativas entre as lojas analisadas. No Banco Careca e na Vendinha Rápida, as idades concentram-se majoritariamente entre 30 e 45 anos, indicando um público predominantemente adulto e mais homogêneo. Em contrapartida, a Ferraria Seca e o Saloon exibem distribuições mais amplas, com clientes variando entre 15 e 80 anos, o que revela um perfil etário mais diversificado. Nota-se ainda, com base na que a Vendinha Rápida possui a maior média de idade entre as lojas, enquanto a Ferraria Seca concentra o público mais jovem.
+Conforme apresentado na $\ref{fig-frequencia-idades-lojas}$ observa-se que a distribuição das idades apresenta variações significativas entre as lojas analisadas. No Banco Careca e na Vendinha Rápida, as idades concentram-se majoritariamente entre 30 e 45 anos, indicando um público predominantemente adulto e mais homogêneo. Em contrapartida, a Ferraria Seca e o Saloon exibem distribuições mais amplas, com clientes variando entre 15 e 80 anos, o que revela um perfil etário mais diversificado. Nota-se ainda, com base na \ref{tab:idades-lojas}, que a Vendinha Rápida possui a maior média de idade entre as lojas, enquanto a Ferraria Seca concentra o público mais jovem.
