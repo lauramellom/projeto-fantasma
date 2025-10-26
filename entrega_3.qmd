@@ -1,6 +1,6 @@
 ---
-# Nome do arquivo PDF gerado na pasta resultado
-output-file: "Entrega 3"
+title: "Entrega 3 - Laura"
+format: pdf
 ---
 
 ```{r setup}
@@ -8,72 +8,31 @@ output-file: "Entrega 3"
 source("rdocs/entrega_3.R")
 ```
 
-```{r}
-# Rodar apenas uma vez na vida!
-## Instalando o tinytex(pacote apenas)
-### CRAN version
-install.packages('tinytex')
 
 
-## Baixando o tinytex
-library(tinytex)
-tinytex::install_tinytex()
-```
-
-
-
-
-# Objetivo
-
-Esse template foi criado para o alocado conseguir observar como ficaria sua análise o arquivo principal. É daqui que o gerente de projetos irá copiar a análise e inserir no documento principal que gerará o relatório estatístico.
-
-# Análises
-
-## Análise 5
-
-## Análise 6
+# Análise 3
+Esta análise tem como objetivo investigar o perfil etário dos clientes das lojas localizadas na cidade de Âmbar Seco. Para isso, foram consideradas as variáveis Idade dos Clientes uma variável quantitativa contínua e Loja, variável qualitativa nominal que identifica cada estabelecimento. A partir dessas informações, foi elaborado um histograma segmentado por loja, permitindo observar como as idades se distribuem entre os diferentes pontos comerciais do município.
 
 ```{r}
-#| label: fig-
-#| fig-cap: "Gráfico "
-
-
-
+#| label: fig-frequencia-idades-lojas
+#| fig-cap: "Histograma das idades dos clientes por loja em Âmbar Seco"
+grafico3
 ```
 
-
-::: {#quad- layout-align="center" quad-pos="H"}
-```{=latex}
-
-
-
-```
-
-Medidas resumo da 
-:::
-
-
-
-::: {#tbl-modalidades layout-align="center" tbl-pos="H"}
-```{=latex}
-
-
-```
+\begin{table}[h!]
+\centering
+\caption{Resumo das idades dos clientes por loja em Âmbar Seco}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Loja} & \textbf{Idade mínima} & \textbf{Idade máxima} & \textbf{Idade média} & \textbf{Mediana} \\
+\hline
+Banco Careca & 25,00 & 44,00 & 34,92 & 34,00 \\
+Ferraria Seca & 16,00 & 80,00 & 33,67 & 30,50 \\
+Saloon & 15,00 & 77,00 & 34,20 & 32,50 \\
+Vendinha Rápida & 30,00 & 49,00 & 40,34 & 41,00 \\
+\hline
+\end{tabular}
+\end{table}
 
 
-:::
-
-
-
-
-$\ref{fig-}$
-
-[@tbl-]
-
-
-[**Quadro** @quad-]
-
-
-
-
-
+Conforme apresentado na $\ref{fig-frequencia-idades-lojas}$ observa-se que a distribuição das idades apresenta variações significativas entre as lojas analisadas. No Banco Careca e na Vendinha Rápida, as idades concentram-se majoritariamente entre 30 e 45 anos, indicando um público predominantemente adulto e mais homogêneo. Em contrapartida, a Ferraria Seca e o Saloon exibem distribuições mais amplas, com clientes variando entre 15 e 80 anos, o que revela um perfil etário mais diversificado. Nota-se ainda, com base na que a Vendinha Rápida possui a maior média de idade entre as lojas, enquanto a Ferraria Seca concentra o público mais jovem.
