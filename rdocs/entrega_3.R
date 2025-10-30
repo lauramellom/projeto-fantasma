@@ -64,12 +64,75 @@ ambar_seco <- AmbarSeco[!duplicated(AmbarSeco$ClientID), ]
 
 #Gráfico 
 grafico3 <- ggplot(ambar_seco) +
-  aes(x = Age) +
-  geom_histogram(colour = "white", fill = "#A11D21", binwidth = 7) +
-  facet_grid(. ~ NameStore) +
-  labs(x = "Idade dos Clientes", y = "Frequência") +
-  theme_estat(
-    strip.text = element_text(size = 12),
-    strip.background = element_rect(colour = "black", fill = "white")
-  )
+  aes(x = reorder(NameStore, Age, FUN = median), y = Age) +
+  geom_boxplot(fill = "#A11D21", width = 0.5) +
+  stat_summary(
+    fun = "mean",
+    geom = "point",
+    shape = 23,
+    size = 3,
+    fill = "white"
+  ) +
+  labs(
+    x = "Loja",
+    y = "Idade dos Clientes"
+  ) +
+  theme_estat()
+
+ggsave("box_bi.pdf", width = 158, height = 93, units = "mm")
 grafico3
+
+
+print_quadro_resumo <- function(data, var_name, group_name,
+                                title = "Medidas resumo da idade dos clientes por loja",
+                                label = "quad:idade_lojas") {
+  
+  var_name <- substitute(Age)
+  group_name <- substitute(NameStore)
+  
+  resumo <- data %>%
+    group_by(!!group_name) %>%
+    summarize(
+      `Média` = round(mean(!!sym(var_name)), 2),
+      `Desvio Padrão` = round(sd(!!sym(var_name)), 2),
+      `Mínimo` = round(min(!!sym(var_name)), 2),
+      `1º Quartil` = round(quantile(!!sym(var_name), 0.25), 2),
+      `Mediana` = round(quantile(!!sym(var_name), 0.5), 2),
+      `3º Quartil` = round(quantile(!!sym(var_name), 0.75), 2),
+      `Máximo` = round(max(!!sym(var_name)), 2)
+    ) %>%
+    as.data.frame()
+  
+  latex <- str_c(
+    "\\begin{quadro}[H]
+\\caption{", title, "}
+\\centering
+\\begin{adjustbox}{max width=\\textwidth}
+\\begin{tabular}{|l|", 
+    str_dup("S[table-format=3.2]|", ncol(resumo) - 1), "}
+\\toprule
+\\textbf{", names(resumo)[1], "}"
+  )
+  
+  for (col in names(resumo)[-1]) {
+    latex <- str_c(latex, " & \\textbf{", col, "}")
+  }
+  latex <- str_c(latex, " \\\\ \n\\midrule\n")
+  
+  for (i in seq_len(nrow(resumo))) {
+    linha <- str_c(resumo[i, 1], " & ", 
+                   str_flatten(resumo[i, -1], collapse = " & "),
+                   " \\\\")
+    latex <- str_c(latex, linha, "\n")
+  }
+  
+  latex <- str_c(latex,
+                 "\\bottomrule
+\\end{tabular}
+\\label{", label, "}
+\\end{adjustbox}
+\\end{quadro}")
+  
+  writeLines(latex)
+}
+print_quadro_resumo(ambar_seco, Age, NameStore)

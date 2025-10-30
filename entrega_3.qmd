@@ -19,29 +19,38 @@ source("rdocs/entrega_3.R")
 
 
 # Análise 3
-Esta análise tem como objetivo investigar o perfil etário dos clientes das lojas localizadas na cidade de Âmbar Seco. Para isso, foram consideradas as variáveis Idade dos Clientes uma variável quantitativa contínua e Loja, variável qualitativa nominal que identifica cada estabelecimento. A partir dessas informações, foi elaborado um histograma segmentado por loja, permitindo observar como as idades se distribuem entre os diferentes pontos comerciais do município.
+Esta análise tem como objetivo investigar o perfil etário dos clientes das lojas localizadas na cidade de Âmbar Seco. Para isso, foram consideradas as variáveis Idade dos Clientes uma variável quantitativa contínua e Loja, variável qualitativa nominal que identifica cada estabelecimento.
 
 ```{r}
-#| label: fig-frequencia-idades-lojas
-#| fig-cap: "Histograma das idades dos clientes por loja em Âmbar Seco"
+#| label: fig-idades-lojas
+#| fig-cap: "Boxplot das idades dos clientes por loja em Âmbar Seco"
 grafico3
 ```
 
-\begin{table}[h!]
+::: {#quad-idades-lojas layout-align="center" quad-pos="H"}
+```{=latex}
+\setcounter{quadro}{0}
+\begin{quadro}[H]
+\caption{Medidas resumo da idade dos clientes por loja}
+\label{quad:idade-lojas}
 \centering
-\caption{Resumo das idades dos clientes por loja em Âmbar Seco}
-\label{tab:idades-lojas}
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-\textbf{Loja} & \textbf{Idade mínima} & \textbf{Idade máxima} & \textbf{Idade média} & \textbf{Mediana} \\
-\hline
-Banco Careca & 25,00 & 44,00 & 34,92 & 34,00 \\
-Ferraria Seca & 16,00 & 80,00 & 33,67 & 30,50 \\
-Saloon & 15,00 & 77,00 & 34,20 & 32,50 \\
-Vendinha Rápida & 30,00 & 49,00 & 40,34 & 41,00 \\
-\hline
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|l|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|}
+\toprule
+\textbf{NameStore} & \textbf{Média} & \textbf{Desvio Padrão} & \textbf{Mínimo} & \textbf{1º Quartil} & \textbf{Mediana} & \textbf{3º Quartil} & \textbf{Máximo} \\ 
+\midrule
+Banco Careca & 34.92 & 5.57 & 25 & 31 & 34 & 40 & 44 \\
+Ferraria Seca & 33.67 & 13.31 & 16 & 24 & 30.5 & 39 & 80 \\
+Saloon & 34.2 & 12.7 & 15 & 26 & 32.5 & 38 & 77 \\
+Vendinha Rápida & 40.35 & 6.03 & 30 & 35 & 41 & 46 & 49 \\
+\bottomrule
 \end{tabular}
-\end{table}
+\label{quad:idade_lojas}
+\end{adjustbox}
+\end{quadro}
+```
 
+Medidas resumo das Idades dos Clientes por Loja
+::: 
 
-Conforme apresentado na $\ref{fig-frequencia-idades-lojas}$ observa-se que a distribuição das idades apresenta variações significativas entre as lojas analisadas. No Banco Careca e na Vendinha Rápida, as idades concentram-se majoritariamente entre 30 e 45 anos, indicando um público predominantemente adulto e mais homogêneo. Em contrapartida, a Ferraria Seca e o Saloon exibem distribuições mais amplas, com clientes variando entre 15 e 80 anos, o que revela um perfil etário mais diversificado. Nota-se ainda, com base na \ref{tab:idades-lojas}, que a Vendinha Rápida possui a maior média de idade entre as lojas, enquanto a Ferraria Seca concentra o público mais jovem.
+Conforme evidenciado pelo **Quadro** $\ref{quad:idade_lojas}$ e na $\ref{fig-idades-lojas}$, a distribuição das idades varia significativamente entre as lojas analisadas. A “Vendinha Rápida” apresenta a maior média (40,35 anos), seguida pelo “Banco Careca” (34,92), “Saloon” (34,2) e “Ferraria Seca” (33,67), indicando uma ordem crescente clara das médias. As idades na “Vendinha Rápida” e no “Banco Careca” são relativamente homogêneas, com desvios padrão de 6,03 e 5,57, concentrando-se entre 35 e 46 anos e 31 e 40 anos, respectivamente, enquanto “Saloon” e “Ferraria Seca” apresentam maior variabilidade (12,7 e 13,31), com quartis mais dispersos (1º quartil 26 e 24, 3º quartil 38 e 39) e extremos que vão de 15 a 77 anos e de 16 a 80 anos. Esses dados evidenciam que algumas lojas atendem faixas etárias mais homogêneas e outras apresentam clientes com idades bastante diversificadas.
