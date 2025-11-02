@@ -1,14 +1,7 @@
 ---
-title: "Entrega 3 - Laura"
-date: today
-lang: en
-format:
-  pdf:
-    pdf-engine: xelatex
-    include-in-header: |
-      \usepackage[brazil]{babel}
-      \usepackage[utf8]{inputenc}
-      \usepackage[T1]{fontenc}
+title: "Enstrega 3 - Laura"
+format: pdf
+lang: pt-BR
 ---
 
 ```{r setup}
@@ -27,7 +20,7 @@ Esta análise tem como objetivo investigar o perfil etário dos clientes das loj
 grafico3
 ```
 
-::: {#quad-idades-lojas layout-align="center" quad-pos="H"}
+::: {#quad:idades_lojas layout-align="center" quad-pos="H"}
 ```{=latex}
 \setcounter{quadro}{0}
 \begin{quadro}[H]
@@ -53,4 +46,4 @@ Vendinha Rápida & 40.35 & 6.03 & 30 & 35 & 41 & 46 & 49 \\
 Medidas resumo das Idades dos Clientes por Loja
 ::: 
 
-Conforme evidenciado pelo **Quadro** $\ref{quad:idade_lojas}$ e na $\ref{fig-idades-lojas}$, a distribuição das idades varia significativamente entre as lojas analisadas. A “Vendinha Rápida” apresenta a maior média (40,35 anos), seguida pelo “Banco Careca” (34,92), “Saloon” (34,2) e “Ferraria Seca” (33,67), indicando uma ordem crescente clara das médias. As idades na “Vendinha Rápida” e no “Banco Careca” são relativamente homogêneas, com desvios padrão de 6,03 e 5,57, concentrando-se entre 35 e 46 anos e 31 e 40 anos, respectivamente, enquanto “Saloon” e “Ferraria Seca” apresentam maior variabilidade (12,7 e 13,31), com quartis mais dispersos (1º quartil 26 e 24, 3º quartil 38 e 39) e extremos que vão de 15 a 77 anos e de 16 a 80 anos. Esses dados evidenciam que algumas lojas atendem faixas etárias mais homogêneas e outras apresentam clientes com idades bastante diversificadas.
+Conforme evidenciado pelo **Quadro** $\ref{quad:idades_lojas}$ e na $\ref{fig-idades-lojas}$, a distribuição das idades varia significativamente entre as lojas analisadas. A “Vendinha Rápida” apresenta a maior média (40,35 anos), seguida pelo “Banco Careca” (34,92), “Saloon” (34,2) e “Ferraria Seca” (33,67), indicando uma ordem crescente clara das médias. As idades na “Vendinha Rápida” e no “Banco Careca” são relativamente homogêneas, com desvios padrão de 6,03 e 5,57, concentrando-se entre 35 e 46 anos e 31 e 40 anos, respectivamente, enquanto “Saloon” e “Ferraria Seca” apresentam maior variabilidade (12,7 e 13,31), com quartis mais dispersos (1º quartil 26 e 24, 3º quartil 38 e 39) e extremos que vão de 15 a 77 anos e de 16 a 80 anos. Esses dados evidenciam que algumas lojas atendem faixas etárias mais homogêneas e outras apresentam clientes com idades bastante diversificadas.

@@ -1,6 +1,7 @@
 ---
 title: "Entrega 2 - Laura"
 format: pdf
+lang: pt-BR
 ---
 
 ```{r setup}
@@ -10,8 +11,6 @@ source("rdocs/entrega_2.R")
 
 # Análise 2
 
-Introdução da Análise:
-
 Nesta análise busca-se compreender a relação entre a altura dos indivíduos, registrada originalmente em decímetros (dm) e convertida para centímetros (cm), e o peso, registrado em libras (lbs) e convertido para quilogramas (kg). Ambas as variáveis são quantitativas contínuas. O objetivo é verificar se há associação entre as medidas, avaliando se indivíduos mais altos tendem a apresentar maior peso.
 
 ```{r}
@@ -19,10 +18,34 @@ Nesta análise busca-se compreender a relação entre a altura dos indivíduos, 
 #| fig-cap: "Gráfico de dispersão do peso (kg) em função da altura (cm) dos indivíduo"
 grafico2
 ```
-Descritiva:
 
-A $\ref{fig-peso-altura}$ mostra que indivíduos mais altos costumam apresentar valores de peso maiores, ainda que haja variação considerável dentro de cada faixa de altura. As observações analisadas variam entre 150 cm e 200 cm para altura e entre 45 kg e 115 kg para peso. Nota-se maior concentração de pontos entre 170 cm e 180 cm de altura, com pesos situados principalmente entre 60 kg e 85 kg, caracterizando a região mais densa da distribuição. Apesar dessa relação geral, a dispersão dos pontos revela que pessoas com a mesma altura podem apresentar pesos bastante diferentes, indicando que outros fatores também influenciam significativamente essa medida.
+::: {#quad:peso_altura layout-align="center" quad-pos="H"}
+```{=latex}
+\setcounter{quadro}{0}
+\begin{quadro}[H]
+\caption{Medidas resumo do peso (kg) por faixas de altura (cm)}
+\centering
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{|l|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|}
+\toprule
+\textbf{Faixa de altura} & \textbf{Média} & \textbf{Desvio Padrão} & \textbf{Mínimo} & \textbf{1º Quartil} & \textbf{Mediana} & \textbf{3º Quartil} & \textbf{Máximo} \\ 
+\midrule
+150–159 & 61.56 & 8.73 & 45 & 55.02 & 61.85 & 67.15 & 84.4 \\
+160–169 & 70.01 & 9.19 & 45.2 & 64.5 & 69.6 & 75.52 & 94.7 \\
+170–179 & 77.99 & 8.79 & 52.9 & 72.25 & 78.5 & 83.9 & 106.7 \\
+180–189 & 85.58 & 8.72 & 63.1 & 79.4 & 84.9 & 91.5 & 113 \\
+190–199 & 93.81 & 8.56 & 76.8 & 88.07 & 92.75 & 99.35 & 119.3 \\
+\bottomrule
+\end{tabular}
+\label{quad:peso_altura}
+\end{adjustbox}
+\end{quadro}
+```
 
+Medidas resumo do peso (kg) por faixas de altura (cm)
+::: 
+
+A Figura $\ref{fig-peso-altura}$ evidencia que indivíduos mais altos tendem a apresentar valores de peso maiores, embora exista variação considerável dentro de cada faixa de altura. As observações analisadas variam entre 150 cm e 200 cm para altura e entre 45 kg e 115 kg para peso. O  **Quadro** $\ref{quad:peso_altura}$ a permite identificar que a maior concentração de indivíduos ocorre entre 170 cm e 180 cm, com pesos situados predominantemente entre 60 kg e 85 kg, caracterizando a região mais densa da distribuição. Apesar dessa tendência, a dispersão observada indica que indivíduos com a mesma altura podem apresentar pesos bastante distintos, sugerindo a influência de outros fatores sobre a variável peso.
 
 
 

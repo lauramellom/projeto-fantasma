@@ -33,6 +33,10 @@ infos_lojas <- read_excel("C:/Users/laura/Downloads/relatorio_old_town_road.xlsx
                           sheet = "infos_lojas")
 relatorio_vendas <- read_excel("C:/Users/laura/Downloads/relatorio_old_town_road.xlsx", 
                                sheet = "relatorio_vendas")
+infos_produtos <- read_excel("C:/Users/laura/Downloads/relatorio_old_town_road.xlsx", 
+                             sheet = "infos_produtos")
+infos_vendas <- read_excel("C:/Users/laura/Downloads/relatorio_old_town_road.xlsx", 
+                           sheet = "infos_vendas")
 
 #Padronizar nomes de colunas
 names(infos_lojas)[names(infos_lojas) == "Stor3ID"] <- "StoreID"
@@ -136,3 +140,59 @@ print_quadro_resumo <- function(data, var_name, group_name,
   writeLines(latex)
 }
 print_quadro_resumo(ambar_seco, Age, NameStore)
+
+
+##Análise 4
+
+relatorio_vendas$Date <- as.Date(relatorio_vendas$Date)
+relatorio_vendas$Ano <- format(relatorio_vendas$Date, "%Y")
+
+names(infos_produtos)[names(infos_produtos) == "Ite3ID"] <- "ItemID"
+
+relatorio_vendas$ItemID <-infos_vendas$ItemID
+
+relatorio_vendas$UnityPrice <- NULL
+relatorio_vendas <- merge(relatorio_vendas, infos_produtos[ , c("ItemID", "UnityPrice")],
+                          by = "ItemID",
+                          all.x = TRUE)
+
+relatorio_1889 <- subset(relatorio_vendas, Ano == 1889)
+
+relatorio_1889$valor_venda <- round(
+  relatorio_1889$Quantity * relatorio_1889$UnityPrice, 2)
+
+receita_loja_1889 <- aggregate(valor_venda ~ StoreID,
+                               relatorio_1889,
+                               sum)
+
+receita_loja_1889 <- receita_loja_1889[order(-receita_loja_1889$valor_venda), ]
+top_lojas <- head(receita_loja_1889$StoreID, 3)
+
+vendas_top_lojas <- relatorio_1889[relatorio_1889$StoreID %in% top_lojas, ]
+
+produtos_por_loja <- aggregate(Quantity ~ StoreID + ItemID,
+                               data = vendas_top_lojas,
+                               sum)
+names(produtos_por_loja)[3] <- "quantidade_vendida"
+
+
+produtos_por_loja <- produtos_por_loja[order(produtos_por_loja$StoreID, 
+                                             -produtos_por_loja$quantidade_vendida), ]
+
+top3_produtos_por_loja <- produtos_por_loja[ave(produtos_por_loja$StoreID, 
+                                                produtos_por_loja$StoreID, FUN = seq_along) <= 3, ]
+
+top3_produtos_por_loja$NameStore <- NULL
+top3_produtos_por_loja<- merge(top3_produtos_por_loja, infos_lojas[ , c("StoreID", "NameStore")],
+                          by = "StoreID", all.x = TRUE)
+
+top3_produtos_por_loja$NameProduct <- NULL
+top3_produtos_por_loja<- merge(top3_produtos_por_loja, infos_produtos[ , c("ItemID", "NameProduct")],
+                               by = "ItemID", all.x = TRUE)
+
+receita_loja_1889<- receita_loja_1889[order(-receita_loja_1889$valor_venda), ]
+top_lojas_ordenadas <- receita_loja_1889$StoreID
+
+top3_produtos_por_loja <- top3_produtos_por_loja[order(match(top3_produtos_por_loja$StoreID, top_lojas_ordenadas),
+                                                       -top3_produtos_por_loja$quantidade_vendida), ]
+                             

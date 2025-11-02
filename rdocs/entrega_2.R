@@ -47,3 +47,65 @@ grafico2 <- ggplot(infos_clientes) +
   theme_estat()
 
 grafico2
+
+infos_clientes <- infos_clientes %>%
+  mutate(faixa_altura = cut(
+    Height_cm,
+    breaks = seq(150, 200, by = 10),
+    include.lowest = TRUE,
+    right = FALSE,
+    labels = c("150–159", "160–169", "170–179", "180–189", "190–199")
+  )) 
+print_quadro_resumo <- function(data, var_name, group_name,
+                                title = "Medidas resumo do peso (kg) por faixas de altura (cm)",
+                                label = "quad:peso_altura") {
+  
+  var_name <- substitute(Weight_kg)
+  group_name <- substitute(faixa_altura)
+  
+  resumo <- data %>%
+    group_by(!!group_name) %>%
+    summarize(
+      `Média` = round(mean(!!sym(var_name)), 2),
+      `Desvio Padrão` = round(sd(!!sym(var_name)), 2),
+      `Mínimo` = round(min(!!sym(var_name)), 2),
+      `1º Quartil` = round(quantile(!!sym(var_name), 0.25), 2),
+      `Mediana` = round(quantile(!!sym(var_name), 0.5), 2),
+      `3º Quartil` = round(quantile(!!sym(var_name), 0.75), 2),
+      `Máximo` = round(max(!!sym(var_name)), 2)
+    ) %>%
+    as.data.frame()
+  
+  latex <- str_c(
+    "\\begin{quadro}[H]
+\\caption{", title, "}
+\\centering
+\\begin{adjustbox}{max width=\\textwidth}
+\\begin{tabular}{|l|", 
+    str_dup("S[table-format=3.2]|", ncol(resumo) - 1), "}
+\\toprule
+\\textbf{", names(resumo)[1], "}"
+  )
+  
+  for (col in names(resumo)[-1]) {
+    latex <- str_c(latex, " & \\textbf{", col, "}")
+  }
+  latex <- str_c(latex, " \\\\ \n\\midrule\n")
+  
+  for (i in seq_len(nrow(resumo))) {
+    linha <- str_c(resumo[i, 1], " & ", 
+                   str_flatten(resumo[i, -1], collapse = " & "),
+                   " \\\\")
+    latex <- str_c(latex, linha, "\n")
+  }
+  
+  latex <- str_c(latex,
+                 "\\bottomrule
+\\end{tabular}
+\\label{", label, "}
+\\end{adjustbox}
+\\end{quadro}")
+  
+  writeLines(latex)
+}
+print_quadro_resumo(infos_clientes, Weight_kg, faixa_altura)
