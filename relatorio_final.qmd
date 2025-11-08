@@ -14,9 +14,7 @@ source("rdocs/entrega_3.R")
 # Introdução
 
 O seguinte projeto tem como objetivo fornecer uma visão detalhada sobre o desempenho das lojas da 
-região entre os anos de 1880 e 1889, por meio de análises estatísticas que incluem análise descritiva, 
-análise de correlação e comparações entre múltiplas variáveis. Foi avaliado como as vendas das lojas 
-evoluíram ao longo do tempo, o comportamento de vendas de produtos e características do perfil de clientes, com ênfase em identificar quais itens impulsionam o faturamento em cada loja.
+região entre os anos de 1880 e 1889, por meio de análises estatísticas descritivas. Foi avaliado como as vendas das lojas evoluíram ao longo do tempo, o comportamento de vendas de produtos e características do perfil de clientes, com ênfase em identificar quais itens impulsionam o faturamento em cada loja.
 
 O banco de dados utilizado foi fornecido pela Old Town Road Ltda. e contém registros completos das 
 vendas realizadas na região nos últimos dez anos, incluindo informações detalhadas sobre produtos, 
@@ -137,12 +135,31 @@ As variáveis quantitativas são as variáveis numéricas, que representam carac
 -   **Contínuas**: quando os possíveis valores são resultado de medições (exemplos: massa, altura, tempo, etc)
 
 
+## Coeficiente de Correlação de Pearson
+
+O coeficiente de correlação de Pearson é uma medida que verifica o grau de relação linear entre duas variáveis quantitativas. Este coeficiente varia entre os valores -1 e 1. O valor zero significa que não há relação linear entre as variáveis. Quando o valor do coeficiente $r$ é negativo, diz-se existir uma relação de grandeza inversamente proporcional entre as variáveis. Analogamente, quando $r$ é positivo, diz-se que as duas variáveis são diretamente proporcionais.
+
+O coeficiente de correlação de Pearson é normalmente representado pela letra $r$ e a sua fórmula de cálculo é:
+
+$$
+r_{Pearson} = \frac{\displaystyle \sum_{i=1}^{n} \left [ \left(x_i-\bar{x}\right) \left(y_i-\bar{y}\right) \right]}{\sqrt{\displaystyle \sum_{i=1}^{n} x_i^2 - n\bar{x}^2}  \times \sqrt{\displaystyle \sum_{i=1}^{n} y_i^2 - n\bar{y}^2}}
+$$
+
+Onde:
+
+-   $x_i =$ i-ésimo valor da variável $X$
+-   $y_i =$ i-ésimo valor da variável $Y$
+-   $\bar{x} =$ média dos valores da variável $X$
+-   $\bar{y} =$ média dos valores da variável $Y$
+
+Vale ressaltar que o coeficiente de Pearson é paramétrico e, portanto, sensível quanto à normalidade (simetria) dos dados.
+
 
 # Análises
 ## A receita média das lojas registrada nos anos de 1880 até 1889
 Esta análise tem como objetivo compreender a variação da receita média das lojas da região no período entre 1880 e 1889. Para isso, foram consideradas duas variáveis principais: “ano”, que é quantitativa discreta e “ReceitaMedia”, que é quantitativa contínua, expressa em reais.
 
-Os valores monetários foram convertidos para R$ a fim de padronizar a análise financeira e facilitar a interpretação dos resultados.
+Os valores monetários foram convertidos de dollar para real (1 dollar = 5,31 reais) a fim de padronizar a análise financeira e facilitar a interpretação dos resultados.
 ```{r}
 #| label: fig-receita_media
 #| fig-cap: "Gráfico de linhas da receita média da lojas ao decorrer dos últimos dez anos"
@@ -159,70 +176,125 @@ Nesta análise busca-se compreender a relação entre a altura dos indivíduos, 
 grafico2
 ```
 
-::: {#quad:peso_altura layout-align="center" quad-pos="H"}
+::: {#quad:quadro_peso layout-align="center" quad-pos="H"}
 ```{=latex}
-\setcounter{quadro}{0}
 \begin{quadro}[H]
-\caption{Medidas resumo do peso (kg) por faixas de altura (cm)}
-\centering
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{|l|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|}
-\toprule
-\textbf{Faixa de altura} & \textbf{Média} & \textbf{Desvio Padrão} & \textbf{Mínimo} & \textbf{1º Quartil} & \textbf{Mediana} & \textbf{3º Quartil} & \textbf{Máximo} \\ 
-\midrule
-150–159 & 61.56 & 8.73 & 45 & 55.02 & 61.85 & 67.15 & 84.4 \\
-160–169 & 70.01 & 9.19 & 45.2 & 64.5 & 69.6 & 75.52 & 94.7 \\
-170–179 & 77.99 & 8.79 & 52.9 & 72.25 & 78.5 & 83.9 & 106.7 \\
-180–189 & 85.58 & 8.72 & 63.1 & 79.4 & 84.9 & 91.5 & 113 \\
-190–199 & 93.81 & 8.56 & 76.8 & 88.07 & 92.75 & 99.35 & 119.3 \\
-\bottomrule
-\end{tabular}
-\label{quad:peso_altura}
-\end{adjustbox}
+	\caption{Medidas resumo
+do peso(kg)}
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+	\begin{tabular}{ | l | S[table-format = 2.2] | }
+	\toprule
+		\textbf{Estatística} & \textbf{Valor}
+\\
+		\midrule
+		Média & 75,19 \\
+		Desvio Padrão & 11,92 \\
+		Variância & 142 \\
+		Mínimo & 45 \\
+		1o Quartil & 66,9 \\
+		Mediana & 75,3 \\
+		3o Quartil & 83,2 \\
+		Máximo & 119,3 \\
+	\bottomrule
+
+
+	\end{tabular}
+	\label{quad:quadro_peso}
+	\end{adjustbox}
 \end{quadro}
 ```
 
-Medidas resumo do peso (kg) por faixas de altura (cm)
+Medidas resumo do peso (kg) 
 ::: 
 
+
+::: {#quad:quadro_altura layout-align="center" quad-pos="H"}
+```{=latex}
+\begin{quadro}[H]
+	\caption{Medidas resumo
+da altura(cm)}
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+	\begin{tabular}{ | l | S[table-format = 1.2] |}
+	\toprule
+		\textbf{Estatística} & \textbf{  Valor  }
+\\
+		\midrule
+		Média & 171,48 \\
+		Desvio Padrão & 9,87 \\
+		Variância & 97,38 \\
+		Mínimo & 150 \\
+		1o Quartil & 164,8 \\
+		Mediana & 171,75 \\
+		3o Quartil & 178 \\
+		Máximo & 200 \\
+	\bottomrule
+
+
+	\end{tabular}
+	\label{quad:quadro_altura}
+	\end{adjustbox}
+\end{quadro}
+```
+
+Medidas resumo do altura (cm) 
+::: 
+
+
+A Figura $\ref{fig-peso-altura}$ evidencia que indivíduos mais altos tendem a apresentar valores de peso maiores, embora exista variação considerável dentro de cada faixa de altura. As observações analisadas variam entre 150 cm e 200 cm para altura e entre 45 kg e 115 kg para peso. O  **Quadro** $\ref{quad:quadro_peso}$ e o **Quadro** $\ref{quad:quadro_altura}$  permitem identificar que a maior concentração de indivíduos ocorre entre 170 cm e 180 cm, com pesos situados predominantemente entre 60 kg e 85 kg, caracterizando a região mais densa da distribuição. O coeficiente de correlação de Pearson calculado entre peso e altura é de aproximadamente r ≈ 0,75, indicando uma correlação linear positiva forte. Isso significa que, em geral, quanto maior a altura do indivíduo, maior tende a ser o peso. Apesar dessa tendência, a dispersão observada indica que indivíduos com a mesma altura podem apresentar pesos bastante distintos, sugerindo a influência de outros fatores sobre a variável peso.
  
 
 ## Idade dos clientes de Âmbar Seco a depender da loja
+
 Esta análise tem como objetivo investigar o perfil etário dos clientes das lojas localizadas na cidade de Âmbar Seco. Para isso, foram consideradas as variáveis Idade dos Clientes uma variável quantitativa contínua e Loja, variável qualitativa nominal que identifica cada estabelecimento.
+
+
 ```{r}
 #| label: fig-idades-lojas
 #| fig-cap: "Boxplot das idades dos clientes por loja em Âmbar Seco"
 grafico3
 ```
 
-::: {#quad:idades_lojas layout-align="center" quad-pos="H"}
+::: {#quad:quadro_idade_loja layout-align="center" quad-pos="H"}
 ```{=latex}
 \begin{quadro}[H]
-\caption{Medidas resumo da idade dos clientes por loja}
-\centering
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{|l|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|S[table-format=3.2]|}
-\toprule
-\textbf{NameStore} & \textbf{Média} & \textbf{Desvio Padrão} & \textbf{Mínimo} & \textbf{1º Quartil} & \textbf{Mediana} & \textbf{3º Quartil} & \textbf{Máximo} \\ 
-\midrule
-Banco Careca & 34.92 & 5.57 & 25 & 31 & 34 & 40 & 44 \\
-Ferraria Seca & 33.67 & 13.31 & 16 & 24 & 30.5 & 39 & 80 \\
-Saloon & 34.2 & 12.7 & 15 & 26 & 32.5 & 38 & 77 \\
-Vendinha Rápida & 40.35 & 6.03 & 30 & 35 & 41 & 46 & 49 \\
-\bottomrule
-\end{tabular}
-\label{quad:idade_lojas}
-\end{adjustbox}
+	\caption{Medidas resumo
+da idade dos clientes por loja}
+	\centering
+	\begin{adjustbox}{max width=\textwidth}
+	\begin{tabular}{ | l |
+			S[table-format = 3.2]
+			S[table-format = 3.2]
+			S[table-format = 3.2]
+			S[table-format = 3.2]	|}
+	\toprule
+		\textbf{Estatística} & \textbf{Banco Careca} & \textbf{Ferraria Seca} & \textbf{Saloon} & \textbf{Vendinha Rápida} \\
+		\midrule
+		Média & 34,92 & 33,67 & 34,20 & 40,35 \\
+		Desvio Padrão &  5,57 & 13,31 & 12,70 &  6,03 \\
+		Variância &  31,06 & 177,18 & 161,23 &  36,39 \\
+		Mínimo & 25 & 16 & 15 & 30 \\
+		1o Quartil & 31 & 24 & 26 & 35 \\
+		Mediana & 34,0 & 30,5 & 32,5 & 41,0 \\
+		3o Quartil & 40 & 39 & 38 & 46 \\
+		Máximo & 44 & 80 & 77 & 49 \\
+	\bottomrule
+
+
+	\end{tabular}
+	\label{quad:quadro_idade_loja}
+	\end{adjustbox}
 \end{quadro}
 ```
 
 Medidas resumo das Idades dos Clientes por Loja
 ::: 
 
-Conforme evidenciado pelo **Quadro** $\ref{quad:idade_lojas}$ e na $\ref{fig-idades-lojas}$, a distribuição das idades varia significativamente entre as lojas analisadas. A “Vendinha Rápida” apresenta a maior média (40,35 anos), seguida pelo “Banco Careca” (34,92), “Saloon” (34,2) e “Ferraria Seca” (33,67), indicando uma ordem crescente clara das médias. As idades na “Vendinha Rápida” e no “Banco Careca” são relativamente homogêneas, com desvios padrão de 6,03 e 5,57, concentrando-se entre 35 e 46 anos e 31 e 40 anos, respectivamente, enquanto “Saloon” e “Ferraria Seca” apresentam maior variabilidade (12,7 e 13,31), com quartis mais dispersos (1º quartil 26 e 24, 3º quartil 38 e 39) e extremos que vão de 15 a 77 anos e de 16 a 80 anos. Esses dados evidenciam que algumas lojas atendem faixas etárias mais homogêneas e outras apresentam clientes com idades bastante diversificadas.
+Conforme evidenciado pelo **Quadro** $\ref{quad:quadro_idade_loja}$ e na $\ref{fig-idades-lojas}$, a distribuição das idades varia significativamente entre as lojas analisadas. A “Vendinha Rápida” apresenta a maior média (40,35 anos), seguida pelo “Banco Careca” (34,92), “Saloon” (34,2) e “Ferraria Seca” (33,67), indicando uma ordem crescente clara das médias. As idades na “Vendinha Rápida” e no “Banco Careca” são relativamente homogêneas, com desvios padrão de 6,03 e 5,57, concentrando-se entre 35 e 46 anos e 31 e 40 anos, respectivamente, enquanto “Saloon” e “Ferraria Seca” apresentam maior variabilidade (12,7 e 13,31), com quartis mais dispersos (1º quartil 26 e 24, 3º quartil 38 e 39) e extremos que vão de 15 a 77 anos e de 16 a 80 anos. Esses dados evidenciam que algumas lojas atendem faixas etárias mais homogêneas e outras apresentam clientes com idades bastante diversificadas.
 
 ## O top 3 produtos mais vendidos nas top 3 lojas com maior receita em 1889
-1889
+
 Esta análise identifica os três produtos mais vendidos nas três lojas com maior receita em 1889, 
 destacando aqueles que mais contribuíram para as vendas e para a receita total. Foram consideradas as 
 variáveis Loja e Produto (qualitativas nominais), Quantidade Vendida (quantitativa discreta) e Receita 
@@ -232,30 +304,7 @@ revelar o comportamento de consumo ao longo do ano de 1889.
 
 ::: {#quad:top3_produtos_lojas layout-align="center" quad-pos="H"}
 ```{=latex}
-\begin{quadro}[H]
-\caption{Top 3 produtos mais vendidos nas 3 lojas com maior receita em 1889}
-\centering
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{|l|l|S[table-format=3.0]|S[table-format=6.2]|S[table-format=3.2]|}
-\toprule
-\textbf{Loja} & \textbf{Produto} & \textbf{Quantidade Vendida} & \textbf{Receita (R\$)} & \textbf{\% da Receita da Loja} \\
-\midrule
-Vendinha Rápida & Botas de Couro & 55 & 12572.75 & 4.52\% \\
-Vendinha Rápida & Cavalo & 54 & 161027.45 & 57.88\% \\
-Vendinha Rápida & Colt .45 & 54 & 43449.71 & 15.62\% \\
-\hline
-Loja do Forte & Cavalo & 46 & 137182.15 & 58.29\% \\
-Loja do Forte & Chapéu de Couro & 42 & 6182.11 & 2.63\% \\
-Loja do Forte & Munição & 40 & 748.36 & 0.32\% \\
-\hline
-Loja Ouro Fino & Espingarda & 63 & 61981.72 & 27.00\% \\
-Loja Ouro Fino & Sela & 52 & 28122.82 & 12.25\% \\
-Loja Ouro Fino & Munição & 47 & 880.98 & 0.38\% \\
-\bottomrule
-\end{tabular}
-\label{quad:top3_produtos_lojas}
-\end{adjustbox}
-\end{quadro}
+
 ```
 
 Top 3 produtos mais vendidos nas 3 lojas com maior receita em 1889
