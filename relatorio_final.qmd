@@ -295,32 +295,26 @@ Conforme evidenciado pelo **Quadro** $\ref{quad:quadro_idade_loja}$ e na $\ref{f
 
 ## O top 3 produtos mais vendidos nas top 3 lojas com maior receita em 1889
 
-Esta análise identifica os três produtos mais vendidos nas três lojas com maior receita em 1889, 
-destacando aqueles que mais contribuíram para as vendas e para a receita total. Foram consideradas as 
-variáveis Loja e Produto (qualitativas nominais), Quantidade Vendida (quantitativa discreta) e Receita 
-(quantitativa contínua, em R$), com os valores monetários padronizados em reais para facilitar a 
-comparação. O objetivo é compreender o impacto desses produtos na receita das principais lojas e 
-revelar o comportamento de consumo ao longo do ano de 1889.
+Esta análise tem como objetivo identificar os três produtos mais vendidos nas lojas que apresentaram as maiores receitas em 1889. Para isso, foram consideradas as variáveis Loja e Produto (qualitativas 
+nominais) e Quantidade Vendida (quantitativa discreta). A partir da frequência de vendas de cada 
+produto, buscou-se compreender o comportamento de consumo nas lojas de maior desempenho, permitindo 
+observar quais itens se destacam e como o mix de produtos varia entre os estabelecimentos. Essa análise contribui para identificar preferências do público e orientar decisões estratégicas relacionadas ao 
+foco comercial.
 
-::: {#quad:top3_produtos_lojas layout-align="center" quad-pos="H"}
-```{=latex}
-
+```{r}
+#| label: fig-top3-produtos-lojas
+#| fig-cap: "Gráfico de colunas da frenquêcia dos produtos mais vendidos pelas lojas coma maior receita no ano de 1889"
+grafico4
 ```
 
-Top 3 produtos mais vendidos nas 3 lojas com maior receita em 1889
-::: 
-
-Conforme evidenciado pelo Quadro $\ref{quad:top3_produtos_lojas}$, os três produtos mais vendidos nas 
-lojas com maior receita em 1889 apresentam padrões distintos de contribuição para o faturamento. Na 
-“Vendinha Rápida”, embora “Botas de Couro” seja o produto mais vendido em quantidade (55 unidades), ele representa apenas 4,52% da receita da loja, enquanto o “Cavalo”, com quantidade semelhante, concentra 
-57,88% da receita, evidenciando que nem sempre o volume de vendas se traduz em impacto financeiro 
-proporcional. Na “Loja do Forte”, o padrão se repete: o “Cavalo” domina a receita (58,29%), enquanto 
-itens como “Chapéu de Couro” e “Munição” têm participação muito pequena, apesar de serem vendidos em 
-quantidade considerável. Já na “Loja Ouro Fino”, a distribuição é mais equilibrada entre os dois 
-primeiros produtos, com a “Espingarda” respondendo por 27% da receita e a “Sela” por 12,25%, mostrando 
-que a receita da loja depende de mais de um produto para sustentar o faturamento. Esses dados permitem 
-identificar quais produtos realmente impulsionam a receita em cada loja e perceber oportunidades 
-estratégicas de foco em itens-chave para aumentar o faturamento.
+Conforme evidenciado pela Figura $\ref{fig-top3-produtos-lojas}$, que apresenta os três produtos mais 
+vendidos nas lojas com maior receita em 1889, observa-se que cada estabelecimento possui um padrão 
+distinto de preferência de produtos. Na Loja Ouro Fino, o produto com maior frequência foi “Botas de 
+Couro” (52 unidades), seguido de “Whisky” (49) e “Chapéu de Couro” (45), indicando predominância de 
+itens relacionados a vestimenta e acessórios. Já na Loja TendTudo, o destaque é a “Espingarda” (53 unidades), que supera os demais produtos, enquanto “Whisky” (49) e “Colt .45” (43) aparecem em seguida, caracterizando um perfil de vendas mais orientado a armamentos. Por fim, na Ferraria Apache, a 
+distribuição é mais equilibrada: “Chapéu de Couro” lidera com 52 unidades, seguido por “Espingarda” 
+(42) e por “Machado” e “Whisky”, ambos com 41 unidades, sugerindo ausência de um único produto 
+dominante. Essa variação evidencia que, embora as lojas possuam alta receita, cada estabelecimento tem um perfil de consumo específico.
 
 
 # Conclusões
@@ -346,8 +340,10 @@ diversidade de idades, indicando um atendimento mais amplo. Esses resultados aju
 lojas devem fazer campanhas mais segmentadas e quais podem se beneficiar de estratégias mais 
 generalistas.
 
-Por fim, a quarta análise identificou os três produtos mais vendidos nas três lojas com maior receita 
-em 1889. Ficou evidente que, embora alguns produtos apresentem grande volume de vendas, nem todos 
-contribuem de forma significativa para a receita total. Em contrapartida, determinados itens de menor 
-quantidade vendida tiveram alto impacto financeiro. Esse conhecimento ajuda a compreender quais 
-produtos realmente impulsionam os resultados e onde estão as melhores oportunidades de investimento.
+Por fim, a quarta análise avaliou os produtos mais vendidos nas três lojas com maior receita em 1889. 
+Observou-se que cada estabelecimento apresenta um mix de vendas distinto, com algumas lojas 
+concentradas em categorias específicas e outras com distribuição mais equilibrada entre os produtos. 
+Esses resultados permitem identificar quais itens realmente atraem os clientes em cada loja e reforçam 
+que estratégias de venda devem considerar o perfil de consumo local. Assim, a escolha de produtos a 
+serem priorizados no investimento não deve ser uniforme, mas adaptada ao comportamento observado em 
+cada contexto comercial.

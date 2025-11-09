@@ -168,7 +168,15 @@ ambar_seco %>%
 relatorio_vendas$Date <- as.Date(relatorio_vendas$Date)
 relatorio_vendas$Ano <- format(relatorio_vendas$Date, "%Y")
 
-relatorio_vendas$ItemID <-info_vendas$ItemID
+names(infos_vendas)[names(infos_vendas) == "Sal3ID"] <- "SaleID"
+
+relatorio_vendas$ItemID <- NULL
+relatorio_vendas <- merge(
+  relatorio_vendas,
+  infos_vendas[, c("SaleID", "ItemID")],
+  by = "SaleID",
+  all.x = TRUE
+)
 
 names(infos_produtos)[names(infos_produtos) == "Ite3ID"] <- "ItemID"
 
@@ -193,35 +201,68 @@ produtos_vendidos <-
   group_by(relatorio1889, StoreID, ItemID)%>%
   summarise(quantidade=sum(Quantity))
 
-produtos_filtrados <- filter(produtos_vendidos, StoreID %in% c(7, 5, 17))
+produtos_filtrados <- produtos_vendidos %>% filter( StoreID %in% c(7, 5, 17))
 
-                        
+top3_produtos_por_loja <- produtos_filtrados %>%
+  group_by(StoreID) %>%
+  mutate(rank_prod = min_rank(desc(quantidade))) %>%  
+  filter(rank_prod <= 3) %>%                          
+  ungroup()
 
-trans_drv <- mpg %>%
-  mutate(trans = case_when(
-  )) %>%
-  group_by(trans, drv) %>%
-  summarise(freq = n()) %>%
+names(infos_lojas)[names(infos_lojas) == "Stor3ID"] <- "StoreID"
+
+top3_produtos_por_loja$NameStore <- NULL
+top3_produtos_por_loja <- merge(top3_produtos_por_loja, infos_lojas[ , c("StoreID", "NameStore")],
+                              by = "StoreID",
+                              all.x = TRUE)
+
+top3_produtos_por_loja$NameProduct <- NULL
+top3_produtos_por_loja <- merge(top3_produtos_por_loja, infos_produtos[ , c("ItemID", "NameProduct")],
+                                by = "ItemID",
+                                all.x = TRUE)
+
+
+
+total_loja <- produtos_filtrados %>%
+  group_by(StoreID) %>%
+  summarise(total_loja = sum(quantidade), .groups = "drop")
+
+
+top3_produtos_por_loja$total_loja <- NULL
+top3_produtos_por_loja <- merge(top3_produtos_por_loja, total_loja[ , c("StoreID", "total_loja")],
+                                by = "StoreID",
+                                all.x = TRUE)
+
+trans_drv <- top3_produtos_por_loja %>%
+  group_by(NameStore) %>%
   mutate(
-    freq_relativa = round(freq / sum(freq) * 100,1)
-  )
+    freq_relativa = round(quantidade / total_loja * 100, 1),
+    legendas = paste0(quantidade, " (", freq_relativa, "%)")
+  ) %>%
+  ungroup()
 
 porcentagens <- str_c(trans_drv$freq_relativa, "%") %>% str_replace("
 \\.", ",")
 legendas <- str_squish(str_c(trans_drv$freq, " (", porcentagens, ")")
 )
-ggplot(trans_drv) +
+grafico4 <- ggplot(trans_drv) +
   aes(
-    x = fct_reorder(trans, freq, .desc = T), y = freq,
-    fill = drv, label = legendas
+    x = fct_reorder(NameStore, quantidade, .desc = TRUE),
+    y = quantidade,
+    fill = as.factor(NameProduct),
+    label = legendas
   ) +
-  geom_col(position = position_dodge2(preserve = "single", padding =
-                                        0)) +
+  geom_col(position = position_dodge2(preserve = "single", padding = 0)) +
   geom_text(
-    position = position_dodge(width = .9),
+    position = position_dodge(width = 0.9),
     vjust = -0.5, hjust = 0.5,
     size = 3
   ) +
-  labs(x = "Transmissão", y = "Frequência") +
+  labs(
+    x = "Top Três lojas com maior receita em 1889",
+    y = "Frequência",
+    fill = "Produto"
+  ) +
   theme_estat()
 ggsave("colunas-bi-freq.pdf", width = 158, height = 93, units = "mm")
+grafico4
