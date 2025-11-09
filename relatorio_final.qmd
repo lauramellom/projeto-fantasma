@@ -205,7 +205,6 @@ do peso(kg)}
 \end{quadro}
 ```
 
-Medidas resumo do peso (kg) 
 ::: 
 
 
@@ -238,11 +237,18 @@ da altura(cm)}
 \end{quadro}
 ```
 
-Medidas resumo do altura (cm) 
 ::: 
 
 
-A Figura $\ref{fig-peso-altura}$ evidencia que indivíduos mais altos tendem a apresentar valores de peso maiores, embora exista variação considerável dentro de cada faixa de altura. As observações analisadas variam entre 150 cm e 200 cm para altura e entre 45 kg e 115 kg para peso. O  **Quadro** $\ref{quad:quadro_peso}$ e o **Quadro** $\ref{quad:quadro_altura}$  permitem identificar que a maior concentração de indivíduos ocorre entre 170 cm e 180 cm, com pesos situados predominantemente entre 60 kg e 85 kg, caracterizando a região mais densa da distribuição. O coeficiente de correlação de Pearson calculado entre peso e altura é de aproximadamente r ≈ 0,75, indicando uma correlação linear positiva forte. Isso significa que, em geral, quanto maior a altura do indivíduo, maior tende a ser o peso. Apesar dessa tendência, a dispersão observada indica que indivíduos com a mesma altura podem apresentar pesos bastante distintos, sugerindo a influência de outros fatores sobre a variável peso.
+A $\ref{fig-peso-altura}$ evidencia que indivíduos mais altos tendem a apresentar valores de peso 
+maiores, embora exista variação considerável dentro de cada faixa de altura. As observações analisadas 
+variam entre 150 cm e 200 cm para altura e entre 45 kg e 115 kg para peso. O  **Quadro** 
+$\ref{quad:quadro_peso}$ e o **Quadro** $\ref{quad:quadro_altura}$  permitem identificar que a maior 
+concentração de indivíduos ocorre entre 170 cm e 180 cm, com pesos situados predominantemente entre 60 
+kg e 85 kg, caracterizando a região mais densa da distribuição. O coeficiente de correlação de Pearson 
+calculado entre peso e altura é de aproximadamente r ≈ 0,75, indicando uma correlação linear positiva 
+forte. Isso significa que, em geral, quanto maior a altura do indivíduo, maior tende a ser o peso. 
+Apesar dessa tendência, a dispersão observada indica que indivíduos com a mesma altura podem apresentar pesos bastante distintos, sugerindo a influência de outros fatores sobre a variável peso.
  
 
 ## Idade dos clientes de Âmbar Seco a depender da loja
@@ -288,7 +294,6 @@ da idade dos clientes por loja}
 \end{quadro}
 ```
 
-Medidas resumo das Idades dos Clientes por Loja
 ::: 
 
 Conforme evidenciado pelo **Quadro** $\ref{quad:quadro_idade_loja}$ e na $\ref{fig-idades-lojas}$, a distribuição das idades varia significativamente entre as lojas analisadas. A “Vendinha Rápida” apresenta a maior média (40,35 anos), seguida pelo “Banco Careca” (34,92), “Saloon” (34,2) e “Ferraria Seca” (33,67), indicando uma ordem crescente clara das médias. As idades na “Vendinha Rápida” e no “Banco Careca” são relativamente homogêneas, com desvios padrão de 6,03 e 5,57, concentrando-se entre 35 e 46 anos e 31 e 40 anos, respectivamente, enquanto “Saloon” e “Ferraria Seca” apresentam maior variabilidade (12,7 e 13,31), com quartis mais dispersos (1º quartil 26 e 24, 3º quartil 38 e 39) e extremos que vão de 15 a 77 anos e de 16 a 80 anos. Esses dados evidenciam que algumas lojas atendem faixas etárias mais homogêneas e outras apresentam clientes com idades bastante diversificadas.
@@ -307,7 +312,7 @@ foco comercial.
 grafico4
 ```
 
-Conforme evidenciado pela Figura $\ref{fig-top3-produtos-lojas}$, que apresenta os três produtos mais 
+Conforme evidenciado pela $\ref{fig-top3-produtos-lojas}$, que apresenta os três produtos mais 
 vendidos nas lojas com maior receita em 1889, observa-se que cada estabelecimento possui um padrão 
 distinto de preferência de produtos. Na Loja Ouro Fino, o produto com maior frequência foi “Botas de 
 Couro” (52 unidades), seguido de “Whisky” (49) e “Chapéu de Couro” (45), indicando predominância de 

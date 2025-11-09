@@ -256,7 +256,7 @@ grafico4 <- ggplot(trans_drv) +
   geom_text(
     position = position_dodge(width = 0.9),
     vjust = -0.5, hjust = 0.5,
-    size = 3
+    size = 2
   ) +
   labs(
     x = "Top Três lojas com maior receita em 1889",
