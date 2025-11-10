@@ -39,7 +39,7 @@ infos_clientes$Weight_kg <- infos_clientes$Weight_lbs * 0.45359237
 
 grafico2 <- ggplot(infos_clientes) +
   aes(x = Height_cm, y = Weight_kg) +
-  geom_point(colour = "#A11D21", size = 2) +
+  geom_point(colour = "#A11D21", size = 1.2) +
   labs(
     x = "Altura(cm)",
     y = "Peso(kg)"
